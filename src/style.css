@@ -3,8 +3,11 @@
 }
 
 body {
-    background: #f0f0f0;
-    font-family: "Bebas Neue";
+    background: #000000;
+    font-family: "acumin-pro-extra-condensed",sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,45 +21,55 @@ canvas {
 }
 
 a.save {
-    font-family: "Bebas Neue";
+    font-family: "acumin-pro-extra-condensed",sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
     font-size: 30px;
     color: white;
-    padding: 10px 25px 6px 25px;
+    padding: 10px 25px 10px 25px;
     margin: 10px;
     background-color: #000000;
-    border-style: hidden;
+    border-style: solid;
     text-decoration: none;
     cursor: pointer;
+    border-color: #ffffff;
 }
 
 a.save:hover {
-    color: #f9dc4d;
+    color: #00ff00;
+    border-color: #00ff00;
 }
 
 button {
-    font-family: "Bebas Neue";
+    font-family: "acumin-pro-extra-condensed",sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    
     font-size: 30px;
     color: black;
     padding: 10px 10px 6px 10px;
     margin: 10px;
-    background-color: #b5c83e;
+    background-color: #00ff00;
     border-style: hidden;
     text-decoration: none;
     flex-shrink: 0;
 }
 
 button:hover:active {
-    background-color: #b5c83e;
-    border-color: #b5c83e;
+    background-color: #00FF00;
+    border-color: #00FF00;
 }
 
 button:hover {
-    background-color: #c8dd45;
-    border-color: #c8dd45;
+    background-color: #00FF00;
+    border-color: #00FF00;
 }
 
 input {
-    font-family: "Bebas Neue";
+    font-family: "acumin-pro-extra-condensed",sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    
     height: 52px;
     font-size: 30px;
     border-radius: 0;
@@ -71,15 +84,21 @@ input:focus {
 }
 
 input::placeholder {
-    font-family: "Bebas Neue";
-    font-size: 30px;
+    font-family: "acumin-pro-extra-condensed",sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    
+        font-size: 30px;
 }
 
 .title {
     text-align: center;
     font-size: 60px;
     margin: 10px;
-    color: black;
+    color: #00ff00;
+    font-weight: 700;
+    text-transform: uppercase;
+    
 }
 
 .random-button-container {
@@ -132,7 +151,7 @@ input::placeholder {
 .divider {
     width: 300px;
     size: 1px;
-    color: black;
+    color: #00ff00;
 }
 
 .contact {

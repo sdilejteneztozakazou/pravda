@@ -1,8 +1,8 @@
 import { claims, generators } from "./data.js";
 import { splitText, pickRandom, getAverageLuminance } from "./helperFunctions.js";
 
-const LOGO_OFFSET_X = 525;
-const LOGO_OFFSET_Y = 20;
+const LOGO_OFFSET_X = 480;
+const LOGO_OFFSET_Y = 30;
 const LUMINANCE_THRESHOLD = 0.7;
 
 const unrolledGenerators = generators.flatMap(({ url, weight }) => Array(weight).fill(url));
@@ -12,8 +12,6 @@ const imageReader = new FileReader();
 const logoLight = new Image();
 logoLight.src = "public/logo-light.png";
 
-const logoDark = new Image();
-logoDark.src = "public/logo-dark.png";
 
 let currentImage = new Image();
 let currentText = "Test text";
@@ -37,6 +35,20 @@ const rerollImage = async () => {
 const rerollText = () => {
   currentText = pickRandom(claims);
 };
+
+const grayScale = (context, canvas) => {
+  var imgData = context.getImageData(0, 0, canvas.width, canvas.height);
+      var pixels  = imgData.data;
+      for (var i = 0, n = pixels.length; i < n; i += 4) {
+      var grayscale = pixels[i] * .3 + pixels[i+1] * .59 + pixels[i+2] * .11;
+      pixels[i  ] = grayscale;        // red
+      pixels[i+1] = grayscale;        // green
+      pixels[i+2] = grayscale;        // blue
+      //pixels[i+3]              is alpha
+  }
+  //redraw the image in black & white
+  context.putImageData(imgData, 0, 0);
+}
 
 const canvas = document.getElementById("picture");
 const ctx = canvas.getContext("2d");
@@ -77,6 +89,7 @@ const repaintImage = async () => {
   const scale = Math.max(scaleX, scaleY);
   ctx.setTransform(scale, 0, 0, scale, 0, 0);
   ctx.drawImage(currentImage, 0, 0);
+  grayScale(ctx,canvas);
   ctx.setTransform(); // reset so that everything else is normal size
 
   // calculate luminance to decide whether the logo will be light or dark
@@ -85,11 +98,9 @@ const repaintImage = async () => {
     .data;
   const luminanceAverage = getAverageLuminance(imgd);
 
-  if (luminanceAverage > LUMINANCE_THRESHOLD) { // make logo black if the top-right corner is bright
-    ctx.drawImage(logoDark, LOGO_OFFSET_X, LOGO_OFFSET_Y);
-  } else {
-    ctx.drawImage(logoLight, LOGO_OFFSET_X, LOGO_OFFSET_Y);
-  }
+
+    ctx.drawImage(logoLight, LOGO_OFFSET_X, LOGO_OFFSET_Y,logoLight.width/2.5, logoLight.height/2.5);
+
 
   const lines = splitText(currentText, 20).reverse();
   const fontSize = lines.length < 5 ? 60 : 40;
@@ -99,7 +110,7 @@ const repaintImage = async () => {
     const y = 685;
     const padding = 15;
     const lineHeight = padding + fontSize;
-    ctx.fillStyle = "#f9dc4d";
+    ctx.fillStyle = "#00ff00";
     ctx
       .fillRect(x, y - (index * lineHeight), ctx.measureText(line).width + 2 * padding, lineHeight);
     ctx.textBaseline = "top";
