@@ -5,7 +5,14 @@ export const claims = [
   "ti, kteří měli přijít, nepřišli",
   "Best in covid",
   "Ano, lobboval jsem za biopaliva",
-  "Orbán je můj přítel, naše vztahy jsou skutečně nadstandardní"
+  "Orbán je můj přítel, naše vztahy jsou skutečně nadstandardní",
+  "Můžeme přijmout tisíce migrantů, můžou pracovat v mých fabrikách",
+  "Ještě 4 roky a dost, teď už fakt!",
+  "Důchodcům lžu, protože mi na to vždycky skočí",
+  "Stačí jim přidat pár kaček a jdou mě volit",
+  "Testy na Covid rušim, aby to vypadalo, že už Covid neni",
+  "Nikdo vám nemůže dát ani zlomek toho, co já vám dokážu slíbit",
+  "Je to kampaň"
 ];
 
 export const generators = [
