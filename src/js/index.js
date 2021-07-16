@@ -168,7 +168,7 @@ inputCustom.addEventListener("click", replaceWithCustomText);
 inputCustom.addEventListener("input", replaceWithCustomText);
 
 const downloadLinkReal = document.createElement("a");
-downloadLinkReal.setAttribute("download", "PirStanKampan.jpg");
+downloadLinkReal.setAttribute("download", "pravda.jpg");
 const linkSave = document.getElementById("save");
 linkSave.addEventListener("click", (e) => {
   e.preventDefault();
